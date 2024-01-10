@@ -1,0 +1,7 @@
+export const environment = {
+  production: true,
+  useInMemoryDB: false,
+  backend: { 
+	baseURL: "https://meta-falcon-407301.el.r.appspot.com" // "https://192.168.1.4:8080"
+  }
+};

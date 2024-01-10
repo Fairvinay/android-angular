@@ -1,0 +1,27 @@
+{
+  "name": "com.budget.client",
+  "version": "1.0.0",
+  "description": "angular mobile UI with Capacitor",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/openid/AppAuth-Android.git"
+  },
+  "keywords": [
+    "Vinayak",
+    "Anvekar"
+  ],
+  "author": "Vinayak Anvekar",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/openid/AppAuth-Android/issues"
+  },
+  "homepage": "https://github.com/openid/AppAuth-Android#readme",
+  "dependencies": {
+    "@angular/cli": "^13.2.4",
+    "@angular/core": "^13.2.3"
+  }
+}

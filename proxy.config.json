@@ -1,0 +1,10 @@
+	{
+  "/api/*": {
+    "target": "https://reach.glaubhanta.site",
+      "secure": false,
+        "logLevel": "debug",
+     
+        "changeOrigin": false
+  }
+ 
+}

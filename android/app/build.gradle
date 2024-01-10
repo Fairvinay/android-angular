@@ -1,0 +1,110 @@
+apply plugin: 'com.android.application'
+apply plugin: 'checkstyle'
+apply from: '../config/android-common.gradle'
+apply from: '../config/keystore.gradle'
+
+apply from: 'capacitor.build.gradle'
+apply from: "variables.gradle"
+android {
+    namespace "net.openid.appauthdemo"
+    compileSdkVersion rootProject.ext.compileSdkVersion
+    defaultConfig {
+        applicationId "net.openid.appauthdemo"
+        minSdkVersion rootProject.ext.minSdkVersion
+        targetSdkVersion rootProject.ext.targetSdkVersion
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        aaptOptions {
+             // Files and dirs to omit from the packaged assets dir, modified to accommodate modern web apps.
+             // Default: https://android.googlesource.com/platform/frameworks/base/+/282e181b58cf72b6ca770dc7ca5f91f135444502/tools/aapt/AaptAssets.cpp#61
+            ignoreAssetsPattern '!.svn:!.git:!.ds_store:!*.scc:.*:!CVS:!thumbs.db:!picasa.ini:!*~'
+         }
+        vectorDrawables.useSupportLibrary = true
+        multiDexEnabled true
+
+        // Make sure this is consistent with the redirect URI used in res/raw/auth_config.json,
+        // or specify additional redirect URIs in AndroidManifest.xml
+        //   'appAuthRedirectScheme': 'net.openid.appauthdemo'
+        manifestPlaceholders = [
+               //'appAuthRedirectScheme': 'com.googleusercontent.apps.396135579027-b4gvu1u72l9lhhvov29eild52emov1ak',
+              'appAuthRedirectScheme': 'com.googleusercontent.apps.396135579027-c5jg963rse0ltpqm60dsd5dm3e7tovvq',
+               'apReLoginURL': 'https://www.glaubhanta.site/'
+        ]
+
+    }
+      //appauth.keystore"
+    signingConfigs {
+        debugAndRelease {
+            storeFile file("${rootDir}/budget-client.keystore")
+            storePassword "changeit"
+            keyAlias "budget-client-app"
+            keyPassword "changeit"
+        }
+    }
+    buildTypes {
+        debug {
+            signingConfig signingConfigs.debugAndRelease
+        }
+        release {
+            signingConfig signingConfigs.debugAndRelease
+        }
+
+
+       /* release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }*/
+    }
+    buildFeatures {
+        viewBinding true
+    }
+}
+
+repositories {
+    flatDir{
+        dirs '../capacitor-cordova-android-plugins/src/main/libs', 'libs'
+    }
+}
+
+dependencies {
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
+    implementation project(':library')
+
+    implementation "com.android.support:multidex:1.0.3"
+     implementation 'io.jsonwebtoken:jjwt:0.7.0'
+    implementation "androidx.annotation:annotation:${project.androidXVersions.annotation}"
+    implementation "com.google.android.material:material:${project.googleVersions.material}"
+    implementation "com.github.bumptech.glide:glide:${project.googleVersions.glide}"
+  implementation "androidx.browser:browser:1.3.0"
+    implementation "com.squareup.okio:okio:${project.okioVersion}"
+    implementation "joda-time:joda-time:${project.jodaVersion}"
+    implementation project(':capacitor-android')
+    implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
+   // implementation 'androidx.navigation:navigation-fragment:2.7.6'
+   // implementation 'androidx.navigation:navigation-ui:2.7.6'
+    annotationProcessor("com.github.bumptech.glide:compiler:${project.googleVersions.glide}")
+    //compile "com.android.support:multidex:1.0.3"
+
+
+    implementation "androidx.appcompat:appcompat:$androidxAppCompatVersion"
+    implementation "androidx.coordinatorlayout:coordinatorlayout:$androidxCoordinatorLayoutVersion"
+     implementation "androidx.core:core:1.9.0"
+    implementation "androidx.core:core-splashscreen:$coreSplashScreenVersion"
+    implementation project(':capacitor-android')
+  testImplementation "junit:junit:$junitVersion"
+    androidTestImplementation "androidx.test.ext:junit:$androidxJunitVersion"
+    androidTestImplementation "androidx.test.espresso:espresso-core:$androidxEspressoCoreVersion"
+    implementation project(':capacitor-cordova-android-plugins')
+}
+
+
+apply from: '../config/style.gradle'
+try {
+    def servicesJSON = file('google-services.json')
+    if (servicesJSON.text) {
+        apply plugin: 'com.google.gms.google-services'
+    }
+} catch(Exception e) {
+    logger.info("google-services.json not found, google-services plugin not applied. Push Notifications won't work")
+}

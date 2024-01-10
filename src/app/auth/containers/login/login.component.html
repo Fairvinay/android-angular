@@ -1,0 +1,109 @@
+<!--<p class="auth0">
+  <a href="/api/auth0/">Use Auth0</a>
+</p>-->
+<style>
+.mat-form-field-infix {
+     padding:0;
+     border-top: 0;
+     font-size: 6px;
+}
+</style>
+<form [formGroup]="loginForm">
+  <div class="header">Login to your account</div>
+
+  <mat-form-field>
+    <input
+      matInput
+      type="email"
+      id="email"
+      placeholder="Email"
+      autocomplete="off"
+      formControlName="email"
+      
+    />
+    <mat-error *hasError="'required'">E-mail is required</mat-error>
+     <!--<mat-error *ngIf="loginForm.value.email"> </mat-error>-->
+     <!--    <mat-error *hasError="'email'; let value">  not work --> 
+              <mat-error *ngIf="loginForm.get('email').hasError('invalid')">
+          
+  {{ value }}  Couldn't find your Account</mat-error>
+       
+  </mat-form-field>
+
+  <mat-form-field>
+    <input
+      matInput
+      type="password"
+      id="password"
+      placeholder="Password"
+      autocomplete="off"
+      formControlName="password"
+      required
+    />
+  </mat-form-field>
+
+  <div class="actions">
+    <button
+      mat-flat-button
+      color="primary"
+      type="submit"
+      (click)="login()"
+      [disabled]="!loginForm.valid"
+    >
+      Login
+    </button>
+    <div class="separator">
+      <span>OR</span>
+    </div>  <!-- "githubLogin = 'Please wait... ⌛'" --> 
+    <a href="api/auth/external/github/login" class="github">
+      <button
+        mat-stroked-button
+        type="button"
+        (click)="login()"             
+      >
+        {{ githubLogin }}
+      </button>
+    </a>
+    <!--<a href="#" class="google"> -->
+      <button class="google"
+        mat-stroked-button
+        type="button"
+        [disabled]="!loginForm.valid"
+        (click)=   "getIdToken()  " 
+      >  <!-- googleLogger($event , 'external/google/login') "googleLogin = 'Please wait... ⌛'"--> <!-- "googleLogin = 'Please wait... ⌛'"  -->
+        {{ googleLogin }}
+      </button>
+    <!--</a> -->
+    <button
+      mat-stroked-button
+      type="button"
+      class="google-id"
+      (click)="getIdToken()"
+    >
+      Get Identity from Google (Implicit Flow)
+    </button>
+    <button mat-stroked-button type="button" routerLink="/signup">
+      Sign up
+    </button>
+    <button mat-stroked-button type="button" routerLink="/recover">
+      Recover password
+   </button>
+	<!--  <button mat-stroked-button type="button" (click)="getGlaub()">
+      Fetch Glaub
+    </button>
+	 <div><mat-form-field class="mat-form-field-infix" style="{color: '#d6f3d6', 'font-size':'6px'}"> <input  matInput
+    	 name="glaubData"
+      type="textarea"
+      id="textarea"
+      placeholder=""
+      autocomplete="off"
+      formControlName="glaubData"
+      
+    /> </mat-form-field> --> 
+      <!-- <span class="md-caption" ng-style="{color: 'green', 'font-size':'6px', height:'3px'}"  >   {{glaubData}} </span> -->
+    <!--      <button mat-stroked-button type="button" [color]="showGlaubDefaultLoginBtn ? 'green' : 'grey'"  (click)="defaultLogin()" [disabled]="!showGlaubDefaultLoginBtn">
+   		   Default login
+    	</button>   
+    </div>-->
+  </div>
+</form>

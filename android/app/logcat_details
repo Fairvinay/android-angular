@@ -1,0 +1,21 @@
+
+
+
+
+
+
+
+12-22 17:40:48.144  7809  7809 E AndroidRuntime: Process: net.openid.appauthdemo, PID: 7809
+12-22 17:40:48.144  7809  7809 E AndroidRuntime:        at net.openid.appauth.Preconditions.checkNotNull(Preconditions.java:55)
+12-22 17:40:48.144  7809  7809 E AndroidRuntime:        at net.openid.appauth.AuthorizationRequest$Builder.setAuthorizationServiceConfiguration(AuthorizationRequest.java:656)
+12-22 17:40:48.144  7809  7809 E AndroidRuntime:        at net.openid.appauth.AuthorizationRequest$Builder.<init>(AuthorizationRequest.java:642)
+12-22 17:40:48.144  7809  7809 E AndroidRuntime:        at net.openid.appauthdemo.LoginActivity.createAuthRequest(LoginActivity.java:483)
+12-22 17:40:48.144  7809  7809 E AndroidRuntime:        at net.openid.appauthdemo.LoginActivity.access$300(LoginActivity.java:83)
+12-22 17:40:48.144  7809  7809 E AndroidRuntime:        at net.openid.appauthdemo.LoginActivity$RecreateAuthRequestTask.run(LoginActivity.java:551)
+12-23 19:28:17.739 27092 27092 E AndroidRuntime: Process: net.openid.appauthdemo, PID: 27092
+12-23 19:28:17.739 27092 27092 E AndroidRuntime: java.lang.RuntimeException: Unable to start activity ComponentInfo{net.openid.appauthdemo/net.openid.appauthdemo.TokenActivity}: java.lang.NullPointerException: Attempt to invoke virtual method 'int java.lang.String.length()' on a null object reference
+12-23 19:28:17.739 27092 27092 E AndroidRuntime:        at net.openid.appauthdemo.TokenActivity.onCreate(TokenActivity.java:107)
+12-23 19:28:26.433 28634 28634 E AndroidRuntime: Process: net.openid.appauthdemo, PID: 28634
+12-23 19:28:26.433 28634 28634 E AndroidRuntime: java.lang.RuntimeException: Unable to start activity ComponentInfo{net.openid.appauthdemo/net.openid.appauthdemo.TokenActivity}: java.lang.NullPointerException: Attempt to invoke virtual method 'int java.lang.String.length()' on a null object reference
+12-23 19:28:26.433 28634 28634 E AndroidRuntime:        at net.openid.appauthdemo.TokenActivity.onCreate(TokenActivity.java:107)
+12-24 09:45:26.155  4706  5591 D SuggestedItemsProvider: <SuggestedItems> : (5) [ComponentInfo{com.truecaller/com.truecaller.ui.TruecallerInit}, ComponentInfo{com.sec.android.app.myfiles/com.sec.android.app.myfiles.external.ui.MainActivity}, ComponentInfo{net.openid.appauthdemo/net.openid.appauthdemo.LoginActivity}, ComponentInfo{com.whatsapp/com.wha

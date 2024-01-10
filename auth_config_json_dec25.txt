@@ -1,0 +1,25 @@
+{
+  "client_id": "396135579027-b4gvu1u72l9lhhvov29eild52emov1ak.apps.googleusercontent.com",
+  "redirect_uris": [
+    "https://reach.glaubhanta.site",
+    "https://reach.glaubhanta.site/api/auth/external/google/callback/login",
+    "https://reach.glaubhanta.site/auth/external/google/callback",
+    "com.googleusercontent.apps.396135579027-b4gvu1u72l9lhhvov29eild52emov1ak:/api/auth/external/google/callback/login"
+  ],
+  "redirect_uri": "com.googleusercontent.apps.396135579027-b4gvu1u72l9lhhvov29eild52emov1ak:/api/auth/external/google/callback/login",
+
+  "end_session_redirect_uri": "com.googleusercontent.apps.396135579027-b4gvu1u72l9lhhvov29eild52emov1ak:/api/auth/external/google/callback/login",
+  "authorization_scope": "openid email profile",
+  "discovery_uri": "",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "authorization_endpoint_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_endpoint_uri": "https://oauth2.googleapis.com/token",
+  "end_session_endpoint": "https://reach.glaubhanta.site/oauth2/endSession",
+   "registration_endpoint_uri" : ""   ,
+  "user_info_endpoint_uri": "https://www.googleapis.com/oauth2/v3/userinfo",
+  "https_required": true,
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_secret": "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"
+}
+

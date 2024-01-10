@@ -1,0 +1,210 @@
+<?xml version="1.0" encoding="UTF-8"?><!--
+ * Copyright 2015 The AppAuth for Android Authors. All Rights Reserved.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
+ * in compliance with the License. You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software distributed under the
+ * License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
+ * express or implied. See the License for the specific language governing permissions and
+ * limitations under the License.
+-->
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+
+<uses-permission android:name="android.permission.INTERNET" />
+<!--<uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+  <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/> -->
+<application
+  android:allowBackup="true"
+  android:icon="@mipmap/ic_launcher"
+            android:label="@string/app_name_short"
+
+  android:supportsRtl="true"
+  android:theme="@style/AppTheme"
+  android:usesCleartextTraffic="true"
+  android:hardwareAccelerated="true"
+  android:name="net.openid.appauthdemo.Application">
+  <!-- <application
+    android:icon="@mipmap/ic_launcher"
+    android:label="@string/app_name_short"
+    android:theme="@style/AppTheme"
+    android:supportsRtl="false"
+    android:name="net.openid.appauthdemo.Application"> -->
+  <!--activity android:name="net.openid.appauth.AuthorizationManagementActivity"
+        android:exported="false"
+        android:configChanges="screenSize|smallestScreenSize|screenLayout|orientation|keyboard|keyboardHidden"
+        android:theme="@style/Theme.AppCompat.Translucent.NoTitleBar"
+        android:launchMode="singleTask" />-->
+
+
+  <activity
+    android:name="net.openid.appauthdemo.LoginActivity"
+    android:theme="@style/AppTheme"
+    android:windowSoftInputMode="stateHidden"
+    android:exported="true">
+    <intent-filter>
+      <!-- <action android:name="android.intent.action.MAIN" /> -->
+      <action android:name="android.intent.action.VIEW" />
+      <category android:name="android.intent.category.LAUNCHER" />
+    </intent-filter>
+  </activity>
+
+  <activity
+    android:name="net.openid.appauthdemo.TokenActivity"
+    android:theme="@style/AppTheme"
+    android:windowSoftInputMode="stateHidden"></activity>
+
+  <activity
+    android:name="net.openid.appauth.RedirectUriReceiverActivity"
+    android:exported="true">
+    <intent-filter>
+      <action android:name="android.intent.action.VIEW" />
+
+      <category android:name="android.intent.category.DEFAULT" />
+      <category android:name="android.intent.category.BROWSABLE" />
+
+      <!-- <data android:scheme="https"
+        android:host="appauth.demo-app.io"
+        android:path="/oauth2redirect"/    -->
+      <data android:scheme="${appAuthRedirectScheme}" />
+      <data android:path="${apReLoginURL}" />
+    </intent-filter>
+  </activity>
+  <!-- Main activity -->
+  <activity
+    android:configChanges="orientation|keyboardHidden|keyboard|screenSize|locale|smallestScreenSize|screenLayout|uiMode"
+    android:name="com.budget.client.MainActivity"
+    android:label="@string/title_activity_main"
+    android:theme="@style/AppTheme.NoActionBarLaunch"
+    android:launchMode="singleTask"
+    android:exported="true">
+    <intent-filter android:autoVerify="true">
+      <action android:name="android.intent.action.MAIN" />
+
+      <category android:name="android.intent.category.DEFAULT" />
+      <category android:name="android.intent.category.BROWSABLE" />
+
+      <data android:scheme="https" />
+      <data android:host="*.glaubhanta.site" />
+    </intent-filter>
+    <intent-filter>
+      <action android:name="android.intent.action.MAIN" />
+      <category android:name="android.intent.category.LAUNCHER" />
+    </intent-filter>
+    <!--<intent-filter>
+        <action android:name="android.intent.action.VIEW" />
+        <category android:name="android.intent.category.DEFAULT" />
+        <category android:name="android.intent.category.BROWSABLE" />
+        <data android:scheme="https" android:host="oauth" />
+      </intent-filter> -->
+    <intent-filter>
+      <action android:name="android.intent.action.VIEW" />
+
+      <category android:name="android.intent.category.DEFAULT" />
+      <category android:name="android.intent.category.BROWSABLE" />
+
+      <data
+        android:scheme="https://reach.glaubhanta.site/api/auth/external/google/callback/login"
+        android:host="oauth" />
+    </intent-filter>
+  </activity>
+
+
+  <activity
+    android:name="com.budget.client.WebViewActivity"
+    android:exported="true"
+    android:autoVerify="true">
+    <intent-filter>
+      <action android:name="android.intent.action.VIEW" />
+
+      <category android:name="android.intent.category.DEFAULT" />
+      <category android:name="android.intent.category.BROWSABLE" />
+      <!--<data android:scheme="@string/custom_url_scheme2" />
+      <data android:scheme="${appAuthRedirectScheme}" />
+      <data android:scheme="http" />-->
+      <data android:scheme="https" />
+<!--      <data android:host="reach.glaubhanta.site" />-->
+      <data android:host="*.glaubhanta.site" />
+     <data android:host="localhost" />
+      <!--<data android:path="/api/auth/external/google/callback/login" />-->
+    </intent-filter>
+    <intent-filter android:autoVerify="true">
+      <action android:name="android.intent.action.VIEW" />
+
+      <category android:name="android.intent.category.DEFAULT" />
+      <category android:name="android.intent.category.BROWSABLE" />
+
+      <data
+        android:scheme="https"
+        android:host="oauth" />
+    </intent-filter>
+  </activity>
+
+  <activity
+    android:name="com.budget.client.WebViewDemoActivity"
+    android:exported="true"
+    android:autoVerify="true">
+    <intent-filter>
+      <action android:name="android.intent.action.VIEW" />
+
+      <category android:name="android.intent.category.DEFAULT" />
+      <category android:name="android.intent.category.BROWSABLE" />
+      <data android:scheme="${appAuthRedirectScheme}" />
+      <data android:scheme="http" />
+      <data android:scheme="https" />
+      <data android:host="*.glaubhanta.site" />
+      <!--<data android:host="reach.glaubhanta.site" />
+
+      <data android:host="192.168.1.4" />
+      <data android:host="localhost" /> -->
+      <!-- <data android:host="localhost:8080" />
+       <data android:path="/?jwt_token=" /> -->
+      <data android:path="/api/auth/external/google/callback/login" />
+    </intent-filter>
+  </activity>
+
+
+
+
+  <receiver
+    android:name=".BackGroundReceiver"
+    android:enabled="true"
+    android:exported="true"
+    android:permission="owner.custom.permission">
+    <intent-filter>
+      <action android:name="com.budget.authservice.NOTIFICATION" />
+    </intent-filter>
+  </receiver>
+  <!--<activity
+        android:name="net.openid.appauthdemo.AndroidWebViewActivity"
+        android:exported="true">
+        <intent-filter>
+          <action android:name="android.intent.action.VIEW"/>
+          <category android:name="android.intent.category.DEFAULT"/>
+          <category android:name="android.intent.category.BROWSABLE"/>
+          <data android:scheme="https"
+            android:host="*.glaubhanta.site"
+            android:path="/app/dashboard"/>
+        </intent-filter>
+      </activity>-->
+     <provider
+       android:authorities="${applicationId}.fileprovider" android:exported="false" android:grantUriPermissions="true"
+       android:name="androidx.core.content.FileProvider" >
+        <meta-data android:name="android.support.FILE_PROVIDER_PATHS" android:resource="@xml/file_paths"></meta-data>
+     </provider>
+
+
+</application>
+
+<queries>
+  <intent>
+    <action android:name="android.intent.action.VIEW" />
+    <category android:name="android.intent.category.BROWSABLE" />
+    <data android:scheme="https" />
+  </intent>
+</queries>
+
+</manifest>
+

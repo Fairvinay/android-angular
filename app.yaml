@@ -1,0 +1,4 @@
+runtime: custom
+service: default
+env: flex
+#entrypoint: npm run start

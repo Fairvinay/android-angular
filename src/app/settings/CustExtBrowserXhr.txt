@@ -1,0 +1,18 @@
+import {Injectable} from "@angular/core";
+import {BrowserXhr} from "@angular/http";
+
+@Injectable()
+export class CustExtBrowserXhr extends BrowserXhr {
+  constructor() { 
+     console.log("CustExtBrowserXhr  constructor ");
+      super();
+  }
+  build(): any {
+
+    console.log("CustExtBrowserXhr  build ");
+
+   let xhr = super.build();
+    xhr.withCredentials = true;
+    return <any>(xhr);
+  }
+}
